@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <script language="JavaScript" type="text/javascript"
+            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-3.2.1.min.js"></script>
+    <script language="JavaScript" type="text/javascript"
+            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-ui.min.js"></script>
+    <script src="https://www.chiefgroup.com.hk/script/highchart/global"></script>
+    <style>
+        body {
+            width: 100%;
+            font-family: Noto Sans;
+            overflow-x: hidden;
+        }
+
+            body.theme-0 {
+                background: #303554;
+                color: #FFFFFF;
+            }
+
+                body.theme-0 > .t-highlight {
+                    color: #3A3C48;
+                }
+
+
+            body.theme-1 {
+                background: #000000;
+                color: #FFFFFF;
+            }
+
+                body.theme-1 > .t-highlight {
+                    color: #3A3C48;
+                }
+             
+
+            body.theme-2 {
+                background: #FFFFFF;
+                color: #000000;
+            }
+
+                body.theme-2 > .t-highlight {
+                    color: #2A2A2A;
+                }
+              
+
+        .info-container {
+            width: 100%;
+            display: block;
+            margin: 25px 0px;
+        }
+
+            .info-container > .info-box {
+                width: calc(25% - 25px);
+                display: inline-block;
+                padding: 10px;
+                vertical-align: top;
+            }
+
+                .info-container > .info-box.full-width {
+                    width: calc(100% - 25px);
+                }
+
+        table {
+            border: 1px solid;
+            border-collapse: collapse;
+            /*margin: 0;*/
+            /*padding: 0;*/
+            margin: auto;
+            width: calc(100% - 30px);
+            table-layout: fixed;
+        }
+
+            table > thead > tr > th {
+                text-align: left;
+                padding: 10px;                
+            }
+
+            table.theme-0 > thead > tr > th {
+                background-color: #FFFFFF;
+                color: #303554;
+            }
+
+            table.theme-1 > thead > tr > th {
+                background-color: #FFFFFF;
+                color: #303554;
+            }
+
+            table.theme-2 > thead > tr > th {
+                background-color: #000000;
+                color: #FFFFFF;
+            }
+                table > tbody > tr > td {
+                    text-align: left;
+                    padding: 10px;
+                }
+    </style>
+    <script>
+        var jsonData;
+        var jsonDataTemp
+            = {
+            "DisplayType": "CommonInfo",
+            "Performance": {
+                "D5": 0.23,
+                "M1": 4.46,
+                "M3": 8.70,
+                "M6": 7.89,
+                "Y0": 56.55,
+                "Y1": 37.91,
+                "Y3": 61.60,
+                "Y5": 380.40
+            },
+            "CommonInfo":
+            {
+                "Exchange": "NASDAQ",
+                "Symbol": "AAPL",
+                "CEO": "Timothy Donald Cook",
+                "Headquarter": "庫珀蒂諾",
+                "Found": "1976",
+                "Employee": 161000,
+                "WebsiteUrl": "http://www.apple.com ",
+                "Desc": "Apple, Inc從事智能手機、個人電腦、平板電腦、可穿戴設備和配件以及其他各種相關服務的設計、製造和銷售。它透過以下地理區域營運：美洲、歐洲、大中華區、日本和亞太其他地區。美洲區域包括北美和南美。歐洲區域包括歐洲國家以及印度、中東和非洲。大中華區包括中國、香港和台灣。亞太其他區域包括澳大利亞和亞洲國家。其產品和服務包括iPhone、Mac、iPad、AirPods、Apple TV、Apple Watch、Beats產品、Apple Care、iCloud、數位內容商店、直播媒體和許可服務。該公司由Steven Paul Jobs、Ronald Gerald Wayne和Stephen G. Wozniak於1976年創立，總部位於加利福尼亞州庫比蒂諾。"
+            },
+            "ETFInfo": {
+                "Exchange": "NASDAQ",
+                "Symbol": "QQQ",
+                "Brand": "Invesco",
+                "Expenseratio": 0.2,
+                "Incpetiondate": "19990310",
+                "IndexTracked": "NASDAQ-100 Index",
+                "Managementstyle": "被動",
+                "Assetclass": "股票"
+            }
+        };
+
+        const ParamList = new URLSearchParams(window.location.search);
+
+        var dataType;
+        var perfData;
+        var displayDataType;
+        var displayDataInfo;
+        var lang = ParamList.has("language") ? ParamList.get("language") - 1 : 2;
+        var theme = ParamList.has("themeType") ? ParamList.get("themeType") : 0;
+
+        const ColorSeries = ["#4aafb1", "#fdc24e", "#a2bb53", "#569ac9", "#c07b87",
+            "#baa769", "#764d99", "#a89b91", "#e56020", "#dcb429", "#00558f",
+            "#006971", "#ed9333"];
+        //const GreyColor = "#efefea";
+        //const DarkGrey = "#5a5b5b";
+
+        const dataName = 
+        {
+            Exchange: ["貨幣", "货币", "Exchange"],
+            Symbol: ["代號", "代号", "Symbol"],
+            Brand: ["公司", "公司", "Brand"],
+            Expenseratio: ["費用比率", "费用比率", "Expense Ratio"],
+            Incpetiondate: ["成立日期", "成立日期", "Inception Date"],
+            IndexTracked: ["指數追蹤", "指数追踪", "Index Tracked"],
+            Managementstyle: ["管理", "管理", "Management Style"],
+            Assetclass: ["資產", "资产", "Asset Class"],
+            CEO: ["CEO", "CEO", "CEO"],
+            Headquarter: ["總部", "总部", "Head Quarter"],
+            Found: ["成立年份", "成立年份", "Found"],
+            Employee: ["公司人數", "公司人数", "Employee"],
+            WebsiteUrl: ["網頁", "网頁", "Website"],
+            Desc: ["簡介", "简介", "Description"],
+            Performance: ["表現", "表现", "Performance"],
+            Y5: ["5年", "5年", "5Y"],
+            Y3: ["3年", "3年", "3Y"],
+            Y1: ["1年", "1年", "1Y"],
+            Y0: ["年初至今", "年初至今", "YTD"],
+            M6: ["6個月", "6个月", "6M"],
+            M3: ["3個月", "3个月", "3M"],
+            M1: ["1個月", "1个月", "1M"],
+            D5: ["5日", "5日", "5D"],
+            //YTD: ["年初至今", "年初至今", "YTD"],
+            //ReturnPeriod:["時間", "時間", ""]
+            Return: ["回報", "回报", "Return"]
+
+        }
+
+        const colorTheme =
+        {
+            GreyColor: ["#FFFFFF", "#FFFFFF", "#5a5b5b"],
+            DarkGrey: ["#FFFFFF", "#FFFFFF", "#5a5b5b"]
+        }
+
+        $(document).ready(function () {
+            var themeClass = "theme-" + theme;
+            $("body").addClass(themeClass);
+            $("table").addClass(themeClass);
+            RetrieveData();
+        });
+
+        function RetrieveData() {
+            if (typeof jsonData === "undefined") {
+                jsonData = jsonDataTemp;
+            }
+
+            displayDataType = jsonData.DisplayType;
+            perfData = jsonData.Performance;
+            $("#ETFInfo").css("display", "none");
+            $("#CommonInfo").css("display", "none");
+
+            if (displayDataType == "ETFInfo") {
+                displayDataInfo = jsonData.ETFInfo;
+                $("#ETFInfo").css("display", "block");
+            }
+
+            if (displayDataType == "CommonInfo") {
+                displayDataInfo = jsonData.CommonInfo;
+                $("#CommonInfo").css("display", "block");
+            }
+
+            DisplayDataInfo();
+            CreatePerfBarChart();
+            CreatePerfTable();
+        }
+
+        function DisplayDataInfo() {
+            temp = $.map(displayDataInfo, function (item, i) {
+                if (displayDataType == "ETFInfo") {
+                    $("#ETFInfo > .info-box[data-target=" + i + "]")
+                        .html("<b>" + dataName[i][lang] + "</b><br /><span>" + item + "</span>");
+                }
+
+                if (displayDataType == "CommonInfo") {
+                    $("#CommonInfo > .info-box[data-target=" + i + "]")
+                        .html("<b>" + dataName[i][lang] + "</b><br /><span>" + item + "</span>");
+                }
+            });
+        }
+
+        function CreatePerfBarChart() {
+            var count = 0;
+            var xAxisText = [];
+            console.log(colorTheme["GreyColor"][theme]);
+            console.log(colorTheme["DarkGrey"][theme])
+            temp = $.map(perfData, function (item, i) {
+                count++;
+                xAxisText.push(dataName[i][lang]);
+                return {
+                    name: i,
+                    y: item,
+                    color: ColorSeries[count - 1]
+                }
+            });
+            $(".info-box[data-target=Performance]")
+                .html("<b>" + dataName["Performance"][lang] + "</b>");
+            Highcharts.chart('PerfBarChart', {
+                exporting: {
+                    enabled: false
+                },
+                title: {
+                    text: ''
+                },
+                chart: {
+                    marginTop: 30,
+                    spacingLeft: 15,
+                    spacingRight: 15,
+                    height: 350,
+                    backgroundColor: null,
+                },
+                xAxis: {
+                    minorGridLineWidth: 0,
+                    minorTickLength: 0,
+                    tickLength: 0,
+                    lineWidth: 1,
+                    lineColor: colorTheme["GreyColor"][theme],
+                    categories: xAxisText,
+                    style: {
+                        color: colorTheme["GreyColor"][theme]
+                    },
+                    labels: {
+                        style: {
+                            color: colorTheme["GreyColor"][theme]
+                        }
+                    }
+                },
+                yAxis: {
+                    gridLineColor: colorTheme["GreyColor"][theme],
+                    gridLineWidth: 0,
+                    lineWidth: 1,
+                    plotLines: [{
+                        color: colorTheme["GreyColor"][theme],
+                        width: 1,
+                        value: 0,
+                        zIndex: 5
+                    }],
+                    lineWidth: 0,
+                    title: {
+                        text: "%",
+                        align: 'high',
+                        offset: 20,
+                        rotation: 0,
+                        margin: 0,
+                        y: -20,
+                        style: {
+                            color: colorTheme["GreyColor"][theme]
+                        }
+                    },
+                    labels: {
+                        style: {
+                            color: colorTheme["GreyColor"][theme]
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        colors: ColorSeries
+                    },
+                    series: {
+                        pointWidth: 40 //width of the column bars irrespective of the chart size
+                    }
+                },
+                series: [{
+                    maxPointWidth: 30,
+                    type: 'column',
+                    allowPointSelect: true,
+                    //keys: ['y', 'name'],
+                    data: temp,
+                    showInLegend: false,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }],
+
+                tooltip: {
+                    followPointer: true,
+                    useHTML: true,
+                    style: {
+                        padding: 0
+                    },
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    headerFormat: "",
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b><br/>',
+                    style: {
+                        color: colorTheme["GreyColor"][theme]
+                    }
+                },
+            });
+        };
+
+        function CreatePerfTable() {
+            $("#PerfTable").css("display", "none");
+            $("#PerfTable > thead > th").css("display", "none");
+            $("#PerfTable > tbody > td").css("display", "none");
+
+            if (perfData != null) {
+                $("#PerfTable").css("display", "table");
+                $("#PerfTable > thead > tr > th[data-target=ReturnPeriod]").css("display", "table-cell");
+                $("#PerfTable > tbody > tr > td[data-target=Return]").css("display", "table-cell")
+                    .text(dataName["Return"][lang]);
+                //$("#PerfTable > thead > tr > th[data-target=YTD]").css("display", "table-cell")
+                //    .text(dataName["YTD"][lang]);
+                //$("#PerfTable > tbody > tr > td[data-target=YTD]").css("display", "table-cell")
+                //    .text("-");
+
+                $.map(perfData, function (item, i) {
+                    $("#PerfTable > thead > tr > th[data-target=" + i + "]").css("display", "table-cell").text(dataName[i][lang]);
+                    $("#PerfTable > tbody > tr > td[data-target=" + i + "]").css("display", "table-cell").text(item + "%");
+                });
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="info-container" id="ETFInfo">
+        <div class="info-box" data-target="Exchange"></div>
+        <div class="info-box" data-target="Symbol"></div>
+        <div class="info-box" data-target="Brand"></div>
+        <div class="info-box" data-target="Expenseratio"></div>
+        <div class="info-box" data-target="Incpetiondate"></div>
+        <div class="info-box" data-target="IndexTracked"></div>
+        <div class="info-box" data-target="Managementstyle"></div>
+        <div class="info-box" data-target="Assetclass"></div>
+    </div>
+    <div class="info-container" id="CommonInfo">
+        <div class="info-box" data-target="Exchange"></div>
+        <div class="info-box" data-target="Symbol"></div>
+        <div class="info-box" data-target="CEO"></div>
+        <div class="info-box" data-target="Headquarter"></div>
+        <div class="info-box" data-target="Found"></div>
+        <div class="info-box" data-target="Employee"></div>
+        <div class="info-box" data-target="WebsiteUrl"></div>
+        <div class="info-box full-width" data-target="Desc"></div>
+    </div>
+    <div class="info-container">
+        <div class="info-box" data-target="Performance"></div>
+        <br />
+        <div id="PerfBarChart" style="margin: 20px 0px;"></div>
+        <table id="PerfTable">
+            <thead>
+                <tr>
+                    <th data-target="ReturnPeriod"></th>
+                    <th data-target="Y0"></th>
+                    <th data-target="M1"></th>
+                    <th data-target="M3"></th>
+                    <th data-target="M6"></th>
+                    <th data-target="Y1"></th>
+                    <th data-target="Y3"></th>
+                    <th data-target="Y5"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-target="Return"></td>
+                    <td data-target="Y0"></td>
+                    <td data-target="M1"></td>
+                    <td data-target="M3"></td>
+                    <td data-target="M6"></td>
+                    <td data-target="Y1"></td>
+                    <td data-target="Y3"></td>
+                    <td data-target="Y5"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
