@@ -1,0 +1,99 @@
+body {
+    width: 100%;
+    font-family: -apple-system,BlinkMacSystemFont,Trebuchet MS,Roboto,Ubuntu,sans-serif;
+    overflow-x: hidden;
+}
+
+    body.theme-0 {
+        background: #000000;
+        color: #FFFFFF;
+    }
+
+        body.theme-0 > .t-highlight {
+            color: #3A3C48;
+        }
+
+
+    body.theme-1 {
+        background: #131722;
+        color: #FFFFFF;
+    }
+
+        body.theme-1 > .t-highlight {
+            color: #3A3C48;
+        }
+
+
+    body.theme-2 {
+        background: #FFFFFF;
+        color: #131722;
+    }
+
+        body.theme-2 > .t-highlight {
+            color: #2A2A2A;
+        }
+
+@media only screen and (max-width: 900px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 899px) {
+    .mobile {
+        display: none;
+    }
+}
+
+.info-container {
+    width: 100%;
+    display: block;
+    margin: 25px 0px;
+}
+
+    .info-container > .info-box {
+        width: 100%;
+        display: inline-block;
+        padding: 10px;
+        vertical-align: top;
+        font-weight: bold;
+    }
+
+table {
+    /* border: 1px solid; */
+    border-collapse: collapse;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    margin: auto;
+    width: calc(100% - 30px);
+    table-layout: fixed;
+}
+
+    table > thead > tr > th {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table.theme-0 > thead > tr > th {
+        background-color: #3E3D3D;
+        color: #FFFFFF;
+    }
+
+    table.theme-1 > thead > tr > th {
+        background-color: #FFFFFF;
+        color: #303554;
+    }
+
+    table.theme-2 > thead > tr > th {
+        background-color: #131722;
+        color: #FFFFFF;
+    }
+
+    table > tbody > tr > td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table.theme-0 > tbody > tr {
+        border-bottom: 1px solid #3E3D3D;
+    }

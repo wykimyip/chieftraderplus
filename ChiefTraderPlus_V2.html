@@ -1,110 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title></title>
     <script language="JavaScript" type="text/javascript"
-            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-3.2.1.min.js"></script>
+        src="https://www.chiefgroup.com.hk/Scripts/global/jquery-3.2.1.min.js"></script>
     <script language="JavaScript" type="text/javascript"
-            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-ui.min.js"></script>
+        src="https://www.chiefgroup.com.hk/Scripts/global/jquery-ui.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <style>
-        body {
-            width: 100%;
-            font-family: -apple-system,BlinkMacSystemFont,Trebuchet MS,Roboto,Ubuntu,sans-serif;
-            overflow-x: hidden;
-        }
-
-            body.theme-0 {
-                background: #303554;
-                color: #FFFFFF;
-            }
-
-                body.theme-0 > .t-highlight {
-                    color: #3A3C48;
-                }
+    <link rel="stylesheet" href="style.css" />
 
 
-            body.theme-1 {
-                background: #131722;
-                color: #FFFFFF;
-            }
-
-                body.theme-1 > .t-highlight {
-                    color: #3A3C48;
-                }
-
-
-            body.theme-2 {
-                background: #FFFFFF;
-                color: #131722;
-            }
-
-                body.theme-2 > .t-highlight {
-                    color: #2A2A2A;
-                }
-
-        @media only screen and (max-width: 900px) {
-            .desktop {
-                display: none;
-            }
-        }
-
-        @media only screen and (min-width: 899px) {
-            .mobile {
-                display: none;
-            }
-        }
-
-        .info-container {
-            width: 100%;
-            display: block;
-            margin: 25px 0px;
-        }
-
-            .info-container > .info-box {
-                width: 100%;
-                display: inline-block;
-                padding: 10px;
-                vertical-align: top;
-            }
-
-        table {
-            border: 1px solid;
-            border-collapse: collapse;
-            /*margin: 0;*/
-            /*padding: 0;*/
-            margin: auto;
-            width: calc(100% - 30px);
-            table-layout: fixed;
-        }
-
-            table > thead > tr > th {
-                text-align: left;
-                padding: 10px;
-            }
-
-            table.theme-0 > thead > tr > th {
-                background-color: #FFFFFF;
-                color: #303554;
-            }
-
-            table.theme-1 > thead > tr > th {
-                background-color: #FFFFFF;
-                color: #303554;
-            }
-
-            table.theme-2 > thead > tr > th {
-                background-color: #131722;
-                color: #FFFFFF;
-            }
-
-            table > tbody > tr > td {
-                text-align: left;
-                padding: 10px;
-            }
-    </style>
     <script>
         var jsonData;
         var jsonDataTemp
@@ -118,6 +26,95 @@
                     "PR": null,
                     "Currency": "HKD"
                 },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202112",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202312",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 3.09725500,
+                    "PR": null,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202311",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 5.09725500,
+                    "PR": 32.958037554385161438058163500,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202310",
+                    "TotalDiv": null,
+                    "SDiv": 14.34,
+                    "NDiv": 32.09725500,
+                    "PR": 19.958037554385161438058163500,
+                    "Currency": "HKD"
+                },
+                {
+                    "Period": "202309",
+                    "TotalDiv": null,
+                    "SDiv": null,
+                    "NDiv": 20.09725500,
+                    "PR": 6.958037554385161438058163500,
+                    "Currency": "HKD"
+                },
+
                 {
                     "Period": "202212",
                     "TotalDiv": 2.16310000,
@@ -210,7 +207,7 @@
         //    "#baa769", "#764d99", "#a89b91", "#e56020", "#dcb429", "#00558f",
         //    "#006971", "#ed9333"];
 
-        const ColorSeries = "#BFD288";
+        const ColorSeries = ["#418bfa", "#6BE4EE", "#FFAE63"]; //BLUE,GREEN, YELLOW
 
         const dataName =
         {
@@ -232,6 +229,7 @@
             Currency: ["貨幣", "货币", "Currency"],
             SDiv: ["特別息", "特别息", "Special Dividend"],
             NDiv: ["普通息", "普通息", "Normal Dividend"]
+
         }
 
         const colorTheme =
@@ -272,7 +270,7 @@
                 return {
                     name: item["Name"],
                     y: item["Yield"],
-                    color: ColorSeries
+                    color: ColorSeries[0]
                 }
             });
 
@@ -348,7 +346,7 @@
                 },
                 plotOptions: {
                     column: {
-                        colors: ColorSeries
+                        colors: ColorSeries[0]
                     },
                     series: {
                         pointWidth: 40 //width of the column bars irrespective of the chart size
@@ -397,7 +395,7 @@
         function DisplayDividendInfo() {
             $(".info-box[data-target=DividendHistory]").html(dataName["DividendHistory"][lang]);
             $.each(recordList, function (index) {
-                DisplayDividendInfoMobile(recordList[index]);  
+                DisplayDividendInfoMobile(recordList[index]);
                 DisplayDividendInfoDesktop(recordList[index]);
             })
         }
@@ -483,25 +481,29 @@
             var dataSDiv = [];
             var dataNDiv = [];
             var dataPR = [];
+            var dataCurrency = [];
             var toolTipInfo = [];
             $.map(divHistory, function (item, i) {
                 xAxisText.push(ConvertToMMYYYY(item["Period"]));
                 dataSDiv.push(item["SDiv"] == null ? 0 : item["SDiv"]);
                 dataNDiv.push(item["NDiv"] == null ? 0 : item["NDiv"]);
+                dataCurrency.push(item["Currency"] == null ? 0 : item["Currency"]);
                 dataPR.push(item["PR"] == null ? 0 : parseFloat(ConvertToDP(item["PR"], 2)));
             });
-            console.log(dataPR);
+
+            console.log("dataCurrency", dataCurrency);
+
             Highcharts.chart('DividendTrend', {
                 title: {
-                    text: '',
+                    text: null,
                     //align: 'left'
                 },
                 chart: {
-                        marginTop: 30,
-                        spacingLeft: 15,
-                        spacingRight: 30,
-                        height: 350,
-                        backgroundColor: null,
+                    marginTop: 30,
+                    spacingLeft: 15,
+                    spacingRight: 30,
+                    height: 350,
+                    backgroundColor: null,
                 },
                 legend: {
                     itemStyle: {
@@ -510,89 +512,137 @@
                     }
                 },
                 credits: {
-                        enabled: false
-                    },
+                    enabled: false
+                },
                 xAxis: {
-                        minorGridLineWidth: 0,
-                        minorTickLength: 0,
-                        tickLength: 0,
-                        lineWidth: 1,
-                        lineColor: colorTheme["GreyColor"][theme],
-                        categories: xAxisText,
+                    minorGridLineWidth: 0,
+                    minorTickLength: 0,
+                    tickLength: 0,
+                    lineWidth: 1,
+                    lineColor: colorTheme["GreyColor"][theme],
+                    categories: xAxisText,
+                    style: {
+                        color: colorTheme["GreyColor"][theme]
+                    },
+                    labels: {
                         style: {
                             color: colorTheme["GreyColor"][theme]
-                        },
-                        labels: {
-                            style: {
-                                color: colorTheme["GreyColor"][theme]
-                            }
                         }
                     },
-                    yAxis: {
-                        gridLineColor: colorTheme["GreyColor"][theme],
-                        gridLineWidth: 0,
-                        lineWidth: 1,
-                        plotLines: [{
-                            color: colorTheme["GreyColor"][theme],
-                            width: 1,
-                            value: 0,
-                            zIndex: 5
-                        }],
-                        lineWidth: 0,
-                        title: {
-                            text: "",
-                            align: 'high',
-                            offset: 20,
-                            rotation: 0,
-                            margin: 0,
-                            y: -20,
-                            x: 30,
-                            style: {
-                                color: colorTheme["GreyColor"][theme]
-                            }
-                        },
-                        labels: {
-                            style: {
-                                color: colorTheme["GreyColor"][theme]
-                            }
+                    crosshair: true
+                },
+                yAxis: {
+                    gridLineColor: colorTheme["GreyColor"][theme],
+                    gridLineWidth: 0,
+                    lineWidth: 1,
+                    plotLines: [{
+                        color: colorTheme["GreyColor"][theme],
+                        width: 1,
+                        value: 0,
+                        zIndex: 5
+                    }],
+                    lineWidth: 0,
+                    title: {
+                        text: "",
+                        align: 'high',
+                        offset: 20,
+                        rotation: 0,
+                        margin: 0,
+                        y: -20,
+                        x: 30,
+                        style: {
+                            color: colorTheme["GreyColor"][theme]
                         }
-                    },               
-                //tooltip: {
-                //    valueSuffix: ' million liters'
-                //},
+                    },
+                    labels: {
+                        format: '{value} %',
+                        style: {
+                            color: colorTheme["GreyColor"][theme]
+                        }
+                    },
+                    crosshair: true
+                },
+                tooltip: {
+                    shared: true,
+                    backgroundColor: '#4C4F5B',
+                    style: {
+                        color: '#ffffff'
+                    },
+                    useHTML: true,
+                    //format: '<b>'+ '{dataName["Date"][lang]}: {key}' + '</b><br/>' + '{#each points}'+'{series.name}: {y}<br/>'+'{/each}', 
+                    formatter: function () {
+                    
+                        //console.log('hello', this, dataName["Date"][lang]);
+                        // '<b>'+ dataName["Date"][lang] +':'+ key + '</b><br/>' + this.points + this.series.name+':'+this.y +'<br/>'
+                        //console.log(this.series.chart.series.find(s=>s.name ==="Currency").data[this.x].y)
+                        var s = `<b> ${dataName["Date"][lang]}: ${this.key} </b>`;
+                        $.each(this.points, (x) => {
+                            console.log(this.y)
+                            s += '<br/>' + '<b>' + this.points[x].series.name + ':' + this.points[x].y + '</b>';
+                        })
+
+                        return s;
+                    }
+                },
                 plotOptions: {
                     series: {
-                        borderRadius: '0%'
+                        borderRadius: '0%',
+                        borderColor: null
+                    },
+                    column: {
+                        stacking: 'div',
                     }
                 },
                 series: [{
                     type: 'column',
-                    maxPointWidth: 30,
+                    maxPointWidth: 50,
                     name: dataName["NDiv"][lang],
                     data: dataNDiv,
-                    color: ColorSeries,
+                    color: ColorSeries[0],
+                    stack: "div",
+                    // dataLabels: {
+                    //     enabled: true,
+                    //     useHTML: true,
+                    //     verticalAlign: "top",
+                    //     style: {
+                    //         color: ColorSeries[0]
+                    //     },
+                    //     y: -30
+                    // }
                 }, {
                     type: 'column',
-                    maxPointWidth: 30,
+                    maxPointWidth: 50,
                     name: dataName["SDiv"][lang],
                     data: dataSDiv,
-                    color: '#448AFF',
+                    color: ColorSeries[1],
+                    stack: "div",
+                    // dataLabels: {
+                    //     enabled: true,
+                    //     useHTML: true,
+                    //     verticalAlign: "top",
+                    //     style: {
+                    //         color: ColorSeries[1]
+                    //     },
+                    //     y: -50
+                    // }
                 }, {
                     type: 'line',
                     //step: 'center',
-                    name: dataName["PR"][lang],
+                    name: dataName["PR"][lang] + ' (%)',
                     data: dataPR,
                     marker: {
                         lineWidth: 2,
-                        lineColor: Highcharts.getOptions().colors[3],
-                        fillColor: 'white'
-                    }
-                    }
-                ]
+                        // lineColor: Highcharts.getOptions().colors[3],
+                        lineColor: ColorSeries[2],
+                        fillColor: 'black'
+                    },
+                    color: '#FFAE63',
+                }]
             });
         }
     </script>
 </head>
+
 <body>
     <!--<div class="info-container">
         <div class="info-box" data-target="YieldAnalysis"></div>
@@ -603,11 +653,17 @@
         <div class="info-box" data-target="YieldTTM"></div>
         <div id="YieldTTMInfo"></div>
     </div>-->
-    
+
+
+    <div class="info-container">
+        <div class="info-box" data-target="DividendTrend"></div>
+        <br />
+        <div id="DividendTrend"></div>
+    </div>
     <div class="info-container">
         <div class="info-box" data-target="DividendHistory"></div>
         <br />
-        <div class="mobile" id="DividendInfo"></div>  
+        <div class="mobile" id="DividendInfo"></div>
         <div class="desktop" id="DividendInfoDesk">
             <table>
                 <thead>
@@ -625,10 +681,6 @@
             </table>
         </div>
     </div>
-    <div class="info-container">
-        <div class="info-box" data-target="DividendTrend"></div>
-        <br />
-        <div id="DividendTrend"></div>
-    </div>
 </body>
+
 </html>
