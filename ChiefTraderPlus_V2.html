@@ -508,7 +508,8 @@
                 legend: {
                     itemStyle: {
                         color: colorTheme["GreyColor"][theme],
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        pointerEvents: 'none'
                     }
                 },
                 credits: {
@@ -529,7 +530,7 @@
                             color: colorTheme["GreyColor"][theme]
                         }
                     },
-                    crosshair: true
+                    crosshair: false
                 },
                 yAxis: {
                     gridLineColor: colorTheme["GreyColor"][theme],
@@ -560,7 +561,7 @@
                             color: colorTheme["GreyColor"][theme]
                         }
                     },
-                    crosshair: true
+                    crosshair: false
                 },
                 tooltip: {
                     shared: true,
@@ -571,10 +572,6 @@
                     useHTML: true,
                     //format: '<b>'+ '{dataName["Date"][lang]}: {key}' + '</b><br/>' + '{#each points}'+'{series.name}: {y}<br/>'+'{/each}', 
                     formatter: function () {
-                    
-                        //console.log('hello', this, dataName["Date"][lang]);
-                        // '<b>'+ dataName["Date"][lang] +':'+ key + '</b><br/>' + this.points + this.series.name+':'+this.y +'<br/>'
-                        //console.log(this.series.chart.series.find(s=>s.name ==="Currency").data[this.x].y)
                         var s = `<b> ${dataName["Date"][lang]}: ${this.key} </b>`;
                         $.each(this.points, (x) => {
                             console.log(this.y)
@@ -634,7 +631,7 @@
                         lineWidth: 2,
                         // lineColor: Highcharts.getOptions().colors[3],
                         lineColor: ColorSeries[2],
-                        fillColor: 'black'
+                        fillColor: ColorSeries[2],
                     },
                     color: '#FFAE63',
                 }]

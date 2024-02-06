@@ -85,8 +85,8 @@ table {
     }
 
     table.theme-2 > thead > tr > th {
-        background-color: #131722;
-        color: #FFFFFF;
+        background-color: #F0F3FA;
+        color: #808080;
     }
 
     table > tbody > tr > td {
