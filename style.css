@@ -97,3 +97,12 @@ table {
     table.theme-0 > tbody > tr {
         border-bottom: 1px solid #3E3D3D;
     }
+
+    table.theme-0 > tbody > tr:hover {
+        background-color: #3E3D3D;
+        color: #ffffff;
+    }
+
+    table.theme-2 > tbody > tr:hover {
+        background-color: #F0F3FA;
+    }
