@@ -1,37 +1,37 @@
 body {
     width: 100%;
-    font-family: -apple-system,BlinkMacSystemFont,Trebuchet MS,Roboto,Ubuntu,sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif;
     overflow-x: hidden;
 }
 
-    body.theme-0 {
-        background: #000000;
-        color: #FFFFFF;
-    }
+body.theme-0 {
+    background: #000000;
+    color: #FFFFFF;
+}
 
-        body.theme-0 > .t-highlight {
-            color: #3A3C48;
-        }
-
-
-    body.theme-1 {
-        background: #131722;
-        color: #FFFFFF;
-    }
-
-        body.theme-1 > .t-highlight {
-            color: #3A3C48;
-        }
+body.theme-0>.t-highlight {
+    color: #3A3C48;
+}
 
 
-    body.theme-2 {
-        background: #FFFFFF;
-        color: #131722;
-    }
+body.theme-1 {
+    background: #131722;
+    color: #FFFFFF;
+}
 
-        body.theme-2 > .t-highlight {
-            color: #2A2A2A;
-        }
+body.theme-1>.t-highlight {
+    color: #3A3C48;
+}
+
+
+body.theme-2 {
+    background: #FFFFFF;
+    color: #131722;
+}
+
+body.theme-2>.t-highlight {
+    color: #2A2A2A;
+}
 
 @media only screen and (max-width: 900px) {
     .desktop {
@@ -51,13 +51,13 @@ body {
     margin: 25px 0px;
 }
 
-    .info-container > .info-box {
-        width: 100%;
-        display: inline-block;
-        padding: 10px;
-        vertical-align: top;
-        font-weight: bold;
-    }
+.info-container>.info-box {
+    width: 100%;
+    display: inline-block;
+    padding: 10px;
+    vertical-align: top;
+    /* font-weight: bold; */
+}
 
 table {
     /* border: 1px solid; */
@@ -69,31 +69,121 @@ table {
     table-layout: fixed;
 }
 
-    table > thead > tr > th {
-        text-align: left;
-        padding: 10px;
-    }
+table>thead>tr>th {
+    text-align: left;
+    padding: 10px;
+}
 
-    table.theme-0 > thead > tr > th {
-        background-color: #3E3D3D;
-        color: #FFFFFF;
-    }
+table.theme-0>thead>tr>th {
+    background-color: #3E3D3D;
+    color: #FFFFFF;
+}
 
-    table.theme-1 > thead > tr > th {
-        background-color: #FFFFFF;
-        color: #303554;
-    }
+table.theme-1>thead>tr>th {
+    background-color: #FFFFFF;
+    color: #303554;
+}
 
-    table.theme-2 > thead > tr > th {
-        background-color: #F0F3FA;
-        color: #808080;
-    }
+table.theme-2>thead>tr>th {
+    background-color: #F0F3FA;
+    color: #808080;
+}
 
-    table > tbody > tr > td {
-        text-align: left;
-        padding: 10px;
-    }
+table>tbody>tr>td {
+    text-align: left;
+    padding: 10px;
+}
 
-    table.theme-0 > tbody > tr {
-        border-bottom: 1px solid #3E3D3D;
-    }
+table.theme-0>tbody>tr {
+    border-bottom: 1px solid #3E3D3D;
+}
+
+table.theme-0>tbody>tr:hover {
+    background-color: #3E3D3D;
+}
+
+table.theme-2>tbody>tr:hover {
+    background-color: #F0F3FA;
+}
+
+.sectionPerformance {
+    display: grid;
+    grid-template-columns: 49% 49%;
+}
+
+.dataPerf {
+    /* display: grid;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dataPerf-item {
+    text-align: center;
+    border-radius: 10px;
+    width: 47%;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.dataPerf-item:nth-child(1) {
+    order: 2;  
+  }
+  
+  .dataPerf-item:nth-child(2) {
+    order: 3;   
+  }
+  
+  .dataPerf-item:nth-child(3) {
+    order: 4; 
+  }
+  
+  .dataPerf-item:nth-child(4) {
+    order: 5; 
+  }
+  
+  .dataPerf-item:nth-child(5) {
+    order: 1; 
+  }
+  
+  .dataPerf-item:nth-child(6) {
+    order: 6;
+  }
+  
+  .dataPerf-item:nth-child(7) {
+    order: 7;
+  }
+  
+  .dataPerf-item:nth-child(8) {
+    order: 8;
+  }
+
+body.theme-0 .dataPerf-item {
+    background-color: #212121;
+}
+
+body.theme-2 .dataPerf-item {
+    background-color: #F9F9F9;
+
+}
+
+body.theme-0 .dataPerf-item .itemName {
+    color: #C7CFD9;
+    position: relative;
+    top: 27%;
+}
+
+body.theme-2 .dataPerf-item .itemName {
+    color: #808080;
+    top:276%;
+}
+
+body.theme-0 .dataPerf-item .itemValue {
+    color: #C7CFD9;
+    position: relative;
+    top: 32%;
+    font-weight: bold;
+}
+
+@media (prefers-color-scheme: dark) {}

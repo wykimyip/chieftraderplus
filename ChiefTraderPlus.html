@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title></title>
     <script language="JavaScript" type="text/javascript"
-            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-3.2.1.min.js"></script>
+        src="https://www.chiefgroup.com.hk/Scripts/global/jquery-3.2.1.min.js"></script>
     <script language="JavaScript" type="text/javascript"
-            src="https://www.chiefgroup.com.hk/Scripts/global/jquery-ui.min.js"></script>
+        src="https://www.chiefgroup.com.hk/Scripts/global/jquery-ui.min.js"></script>
     <script src="https://www.chiefgroup.com.hk/script/highchart/global"></script>
+    <link rel="stylesheet" href="style.css" />
+
     <style>
-        body {
+        /* body {
             width: 100%;
             font-family: Noto Sans;
             overflow-x: hidden;
         }
 
-            body.theme-0 {
-                background: #303554;
-                color: #FFFFFF;
-            }
+        body.theme-0 {
+            background: #303554;
+            color: #FFFFFF;
+        }
 
-                body.theme-0 > .t-highlight {
-                    color: #3A3C48;
-                }
+        body.theme-0>.t-highlight {
+            color: #3A3C48;
+        }
 
 
-            body.theme-1 {
-                background: #000000;
-                color: #FFFFFF;
-            }
+        body.theme-1 {
+            background: #000000;
+            color: #FFFFFF;
+        }
 
-                body.theme-1 > .t-highlight {
-                    color: #3A3C48;
-                }
-             
+        body.theme-1>.t-highlight {
+            color: #3A3C48;
+        }
 
-            body.theme-2 {
-                background: #FFFFFF;
-                color: #000000;
-            }
 
-                body.theme-2 > .t-highlight {
-                    color: #2A2A2A;
-                }
-              
+        body.theme-2 {
+            background: #FFFFFF;
+            color: #000000;
+        }
+
+        body.theme-2>.t-highlight {
+            color: #2A2A2A;
+        } 
+
 
         .info-container {
             width: 100%;
             display: block;
             margin: 25px 0px;
+        }*/
+
+        .info-container>.info-box {
+            width: calc(25% - 25px);
+            display: inline-block;
+            padding: 10px;
+            vertical-align: top;
         }
 
-            .info-container > .info-box {
-                width: calc(25% - 25px);
-                display: inline-block;
-                padding: 10px;
-                vertical-align: top;
-            }
+        .info-container>.info-box.full-width {
+            width: calc(100% - 25px);
+        }
 
-                .info-container > .info-box.full-width {
-                    width: calc(100% - 25px);
-                }
+        .info-container>.info-box.half-width {
+            width: 50%;
+        }
 
         table {
             border: 1px solid;
@@ -73,29 +80,30 @@
             table-layout: fixed;
         }
 
-            table > thead > tr > th {
-                text-align: left;
-                padding: 10px;                
-            }
+        /* table>thead>tr>th {
+            text-align: left;
+            padding: 10px;
+        }
 
-            table.theme-0 > thead > tr > th {
-                background-color: #FFFFFF;
-                color: #303554;
-            }
+        table.theme-0>thead>tr>th {
+            background-color: #FFFFFF;
+            color: #303554;
+        }
 
-            table.theme-1 > thead > tr > th {
-                background-color: #FFFFFF;
-                color: #303554;
-            }
+        table.theme-1>thead>tr>th {
+            background-color: #FFFFFF;
+            color: #303554;
+        }
 
-            table.theme-2 > thead > tr > th {
-                background-color: #000000;
-                color: #FFFFFF;
-            }
-                table > tbody > tr > td {
-                    text-align: left;
-                    padding: 10px;
-                }
+        table.theme-2>thead>tr>th {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        table>tbody>tr>td {
+            text-align: left;
+            padding: 10px;
+        } */
     </style>
     <script>
         var jsonData;
@@ -103,14 +111,14 @@
             = {
             "DisplayType": "CommonInfo",
             "Performance": {
-                "D5": 0.23,
-                "M1": 4.46,
-                "M3": 8.70,
-                "M6": 7.89,
-                "Y0": 56.55,
-                "Y1": 37.91,
-                "Y3": 61.60,
-                "Y5": 380.40
+                "D5": 120.23,
+                "M1": 124.46,
+                "M3": 128.70,
+                "M6": 127.89,
+                "Y0": 1256.55,
+                "Y1": 1237.91,
+                "Y3": 1261.60,
+                "Y5": -380.40
             },
             "CommonInfo":
             {
@@ -118,9 +126,9 @@
                 "Symbol": "AAPL",
                 "CEO": "Timothy Donald Cook",
                 "Headquarter": "庫珀蒂諾",
-                "Found": "1976",
-                "Employee": 161000,
-                "WebsiteUrl": "http://www.apple.com ",
+                "Founded": "1976",
+                "Employees": 161000,
+                "WebsiteUrlDesc": "http://www.apple.com ",
                 "Desc": "Apple, Inc從事智能手機、個人電腦、平板電腦、可穿戴設備和配件以及其他各種相關服務的設計、製造和銷售。它透過以下地理區域營運：美洲、歐洲、大中華區、日本和亞太其他地區。美洲區域包括北美和南美。歐洲區域包括歐洲國家以及印度、中東和非洲。大中華區包括中國、香港和台灣。亞太其他區域包括澳大利亞和亞洲國家。其產品和服務包括iPhone、Mac、iPad、AirPods、Apple TV、Apple Watch、Beats產品、Apple Care、iCloud、數位內容商店、直播媒體和許可服務。該公司由Steven Paul Jobs、Ronald Gerald Wayne和Stephen G. Wozniak於1976年創立，總部位於加利福尼亞州庫比蒂諾。"
             },
             "ETFInfo": {
@@ -135,6 +143,7 @@
             }
         };
 
+
         const ParamList = new URLSearchParams(window.location.search);
 
         var dataType;
@@ -143,14 +152,15 @@
         var displayDataInfo;
         var lang = ParamList.has("language") ? ParamList.get("language") - 1 : 2;
         var theme = ParamList.has("themeType") ? ParamList.get("themeType") : 0;
+        var PerfTable = "";
 
-        const ColorSeries = ["#4aafb1", "#fdc24e", "#a2bb53", "#569ac9", "#c07b87",
-            "#baa769", "#764d99", "#a89b91", "#e56020", "#dcb429", "#00558f",
+        const ColorSeries = ["#47E0BB", "#F641FA", "#428BFA", "#F641FA", "#428BFA",
+            "#F641FA", "#428BFA", "#F641FA", "#e56020", "#dcb429", "#00558f",
             "#006971", "#ed9333"];
         //const GreyColor = "#efefea";
         //const DarkGrey = "#5a5b5b";
 
-        const dataName = 
+        const dataName =
         {
             Exchange: ["貨幣", "货币", "Exchange"],
             Symbol: ["代號", "代号", "Symbol"],
@@ -162,9 +172,9 @@
             Assetclass: ["資產", "资产", "Asset Class"],
             CEO: ["CEO", "CEO", "CEO"],
             Headquarter: ["總部", "总部", "Head Quarter"],
-            Found: ["成立年份", "成立年份", "Found"],
-            Employee: ["公司人數", "公司人数", "Employee"],
-            WebsiteUrl: ["網頁", "网頁", "Website"],
+            Founded: ["成立年份", "成立年份", "Founded"],
+            Employees: ["公司人數", "公司人数", "Employees"],
+            WebsiteUrlDesc: ["網頁", "网頁", "Website"],
             Desc: ["簡介", "简介", "Description"],
             Performance: ["表現", "表现", "Performance"],
             Y5: ["5年", "5年", "5Y"],
@@ -191,7 +201,8 @@
             var themeClass = "theme-" + theme;
             $("body").addClass(themeClass);
             $("table").addClass(themeClass);
-            RetrieveData();
+
+
         });
 
         function RetrieveData() {
@@ -216,7 +227,36 @@
 
             DisplayDataInfo();
             CreatePerfBarChart();
-            CreatePerfTable();
+            // CreatePerfTable();
+        }
+       
+
+        function DisplaydataPerfItem() {
+            Object.entries(perfData).forEach(item => {
+                console.log("hello", item)
+                if (item !== "undefined") {
+                    if (item[0] == "D5") {
+                        item[0] = "5D"
+                    } else if (item[0] == "M1") {
+                        item[0] = "1M";
+                    } else if (item[0] == "M3") {
+                        item[0] = "3M";
+                    } else if (item[0] == "M6") {
+                        item[0] = "6M";
+                    } else if (item[0] == "Y0") {
+                        item[0] = "YTD";
+                    } else if (item[0] == "Y1") {
+                        item[0] = "1Y";
+                    } else if (item[0] == "Y3") {
+                        item[0] = "3Y";
+                    } else if (item[0] == "Y5") {
+                        item[0] = "5Y";
+                    }
+
+                    PerfTable += `<div class="dataPerf-item"><div class="itemName">${item[0]}</div><div class="itemValue">${item[1]}%</div></div>`;
+                }
+            })
+            document.querySelector(".dataPerf").innerHTML = PerfTable;
         }
 
         function DisplayDataInfo() {
@@ -262,6 +302,7 @@
                     spacingRight: 15,
                     height: 350,
                     backgroundColor: null,
+                    styledMode: true
                 },
                 xAxis: {
                     minorGridLineWidth: 0,
@@ -322,7 +363,8 @@
                         colors: ColorSeries
                     },
                     series: {
-                        pointWidth: 40 //width of the column bars irrespective of the chart size
+                        pointWidth: 40, //width of the column bars irrespective of the chart size
+                        borderWidth: 0
                     }
                 },
                 series: [{
@@ -340,6 +382,7 @@
                 }],
 
                 tooltip: {
+                    enabled: false,
                     followPointer: true,
                     useHTML: true,
                     style: {
@@ -356,31 +399,30 @@
             });
         };
 
-        function CreatePerfTable() {
-            $("#PerfTable").css("display", "none");
-            $("#PerfTable > thead > th").css("display", "none");
-            $("#PerfTable > tbody > td").css("display", "none");
+        // function CreatePerfTable() {
+        //     $("#PerfTable").css("display", "none");
+        //     $("#PerfTable > thead > th").css("display", "none");
+        //     $("#PerfTable > tbody > td").css("display", "none");
 
-            if (perfData != null) {
-                $("#PerfTable").css("display", "table");
-                $("#PerfTable > thead > tr > th[data-target=ReturnPeriod]").css("display", "table-cell");
-                $("#PerfTable > tbody > tr > td[data-target=Return]").css("display", "table-cell")
-                    .text(dataName["Return"][lang]);
-                //$("#PerfTable > thead > tr > th[data-target=YTD]").css("display", "table-cell")
-                //    .text(dataName["YTD"][lang]);
-                //$("#PerfTable > tbody > tr > td[data-target=YTD]").css("display", "table-cell")
-                //    .text("-");
+        //     if (perfData != null) {
+        //         $("#PerfTable").css("display", "table");
+        //         $("#PerfTable > thead > tr > th[data-target=ReturnPeriod]").css("display", "table-cell");
+        //         $("#PerfTable > tbody > tr > td[data-target=Return]").css("display", "table-cell")
+        //             .text(dataName["Return"][lang]);
+        //         //$("#PerfTable > thead > tr > th[data-target=YTD]").css("display", "table-cell")
+        //         //    .text(dataName["YTD"][lang]);
+        //         //$("#PerfTable > tbody > tr > td[data-target=YTD]").css("display", "table-cell")
+        //         //    .text("-");
 
-                $.map(perfData, function (item, i) {
-                    $("#PerfTable > thead > tr > th[data-target=" + i + "]").css("display", "table-cell").text(dataName[i][lang]);
-                    $("#PerfTable > tbody > tr > td[data-target=" + i + "]").css("display", "table-cell").text(item + "%");
-                });
-            }
-
-        }
-
+        //         $.map(perfData, function (item, i) {
+        //             $("#PerfTable > thead > tr > th[data-target=" + i + "]").css("display", "table-cell").text(dataName[i][lang]);
+        //             $("#PerfTable > tbody > tr > td[data-target=" + i + "]").css("display", "table-cell").text(item + "%");
+        //         });
+        //     }
+        // }
     </script>
 </head>
+
 <body>
     <div class="info-container" id="ETFInfo">
         <div class="info-box" data-target="Exchange"></div>
@@ -393,20 +435,25 @@
         <div class="info-box" data-target="Assetclass"></div>
     </div>
     <div class="info-container" id="CommonInfo">
-        <div class="info-box" data-target="Exchange"></div>
+        <!-- <div class="info-box" data-target="Exchange"></div> -->
         <div class="info-box" data-target="Symbol"></div>
         <div class="info-box" data-target="CEO"></div>
         <div class="info-box" data-target="Headquarter"></div>
-        <div class="info-box" data-target="Found"></div>
-        <div class="info-box" data-target="Employee"></div>
-        <div class="info-box" data-target="WebsiteUrl"></div>
+        <div class="info-box" data-target="Founded"></div>
+        <div class="info-box" data-target="Employees"></div>
+        <div class="info-box" data-target="WebsiteUrlDesc"></div>
         <div class="info-box full-width" data-target="Desc"></div>
+ 
+
     </div>
     <div class="info-container">
         <div class="info-box" data-target="Performance"></div>
-        <br />
-        <div id="PerfBarChart" style="margin: 20px 0px;"></div>
-        <table id="PerfTable">
+        <!-- <br /> -->
+        <div class="sectionPerformance">
+            <div id="PerfBarChart" style="margin: 20px 0px;"></div>
+            <div class="dataPerf"></div>
+
+            <!-- <table id="PerfTable">
             <thead>
                 <tr>
                     <th data-target="ReturnPeriod"></th>
@@ -431,7 +478,15 @@
                     <td data-target="Y5"></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+        </div>
     </div>
+
+    <script>
+        RetrieveData();
+       
+        DisplaydataPerfItem();
+    </script>
 </body>
+
 </html>
